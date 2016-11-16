@@ -94,7 +94,7 @@ profiles:
         bin/generate_properties
     tests:
       - type: junit
-        command: cd rmd-datasource && mvn verify
+        command: cd rmd-datasource && mvn -Dtest=\!com.ge.predix.solsvc.experience.datasource.datagrid.AssetServiceIT verify
         report_files:
           - "rmd-datasource/target/*-reports/*.xml"
       - CF_UI_PREFIX=${PREDIX_PREFIX:-$USER}jm bundle exec rspec spec/predix_rmd_ref_app_spec.rb
