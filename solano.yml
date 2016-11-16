@@ -117,3 +117,16 @@ profiles:
     tests:
       - PATH=$PATH:`pwd`/node_modules/.bin/ python scripts/installRefApp.py -i ${PREDIX_PREFIX:-production}
 
+  post-production:
+    hooks:
+      pre_setup: |
+        set -e
+        bin/pre_setup
+        git clone https://github.com/solanolabs/predix-nodejs-starter
+        cd predix-nodejs-starter
+        git checkout solano
+        npm install
+    test_exclude_pattern:
+      - spec/**_spec.rb
+    tests:
+      - cd predix-nodejs-starter && cf push ${PREDIX_PREFIX:-$USER}-predix-nodejs-starter
