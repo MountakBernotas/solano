@@ -6,3 +6,6 @@ mkdir ~/.m2/ && echo $MV_SETTINGS > ~/.m2/settings.xml
 mkdir ~/.cf && echo $CF_AUTH_CONFIG > ~/.cf/config.json
 
 scripts/pullSubModules.sh
+
+# Fixup broken rmd-ref-app-ui files
+cp rmd-ref-app-ui-manifest.yml.template rmd-ref-app-ui/manifest.yml.template
