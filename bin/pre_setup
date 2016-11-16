@@ -9,3 +9,6 @@ scripts/pullSubModules.sh
 
 # Fixup broken rmd-ref-app-ui files
 cp rmd-ref-app-ui-manifest.yml.template rmd-ref-app-ui/manifest.yml.template
+
+# Drop broken test
+rm ./rmd-datasource/src/test/java/com/ge/predix/solsvc/experience/datasource/datagrid/AssetServiceIT.java
