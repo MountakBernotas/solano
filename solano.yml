@@ -130,4 +130,8 @@ profiles:
     test_exclude_pattern:
       - spec/**_spec.rb
     tests:
-      - cd predix-nodejs-starter && cf push ${PREDIX_PREFIX:-$USER}-predix-nodejs-starter
+      - |
+        set -e
+        cd predix-nodejs-starter 
+        cf push ${PREDIX_PREFIX:-$USER}-predix-nodejs-starter
+        curl https://`cf env ${PREDIX_PREFIX:-$USER}-predix-nodejs-starter | grep application_uris -A 1 | tail -1 | awk '{print substr($1, 2, length($1)-2) }'` | grep "Secure Page" | wc -l
