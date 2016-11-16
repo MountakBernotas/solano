@@ -1,11 +1,12 @@
 pipeline:
   functional:
     deploy-integrate:
-      - validate: deploy-production
+      - validate
       - integrate
+    deploy-production: post-production
 edges:
   - integrate: deploy-production
-
+  - validate: deploy-production
 
 hooks:
   pre_setup: bin/pre_setup
